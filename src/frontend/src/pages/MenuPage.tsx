@@ -1,7 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Search, SlidersHorizontal, X } from "lucide-react";
 import { useMemo, useState } from "react";
 import CartSidebar from "../components/CartSidebar";
@@ -128,9 +127,15 @@ export default function MenuPage() {
             </div>
           </div>
 
-          {/* Category tabs (horizontal scroll) */}
-          <ScrollArea className="w-full">
-            <div className="flex gap-2 pb-2">
+          {/* Category tabs — native horizontal scroll */}
+          <div
+            className="overflow-x-auto pb-2"
+            style={{
+              scrollbarWidth: "thin",
+              scrollbarColor: "oklch(0.35 0.14 29) transparent",
+            }}
+          >
+            <div className="flex gap-2" style={{ minWidth: "max-content" }}>
               {CATEGORIES.map((cat) => (
                 <button
                   type="button"
@@ -152,7 +157,7 @@ export default function MenuPage() {
                 </button>
               ))}
             </div>
-          </ScrollArea>
+          </div>
         </div>
       </div>
 
